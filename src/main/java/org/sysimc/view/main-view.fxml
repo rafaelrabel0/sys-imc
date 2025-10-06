@@ -17,10 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="403.0" prefWidth="672.0" style="-fx-background-color: #1E1F22;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.sysimc.controller.MainController">
    <children>
-      <MenuBar>
+      <MenuBar style="-fx-background-color: #2B2D30;">
         <menus>
           <Menu mnemonicParsing="false" text="Pessoas">
             <items>
@@ -54,28 +53,37 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label text="Nome:">
+                        <Label text="Nome:" textFill="#b7babf">
                            <font>
-                              <Font name="Calibri Bold" size="12.0" />
+                              <Font name="JetBrains Mono Light" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Altura:" GridPane.rowIndex="2">
+                        <Label text="Altura:" textFill="#b7babf" GridPane.rowIndex="2">
                            <font>
-                              <Font name="Calibri Bold" size="12.0" />
+                              <Font name="JetBrains Mono Light" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Peso:" GridPane.rowIndex="4">
+                        <Label text="Peso:" textFill="#b7babf" GridPane.rowIndex="4">
                            <font>
-                              <Font name="Calibri Bold" size="12.0" />
+                              <Font name="JetBrains Mono Light" size="12.0" />
                            </font>
                         </Label>
-                        <TextField promptText="Digite seu nome" GridPane.rowIndex="1" />
-                        <TextField promptText="Digite sua altura" GridPane.rowIndex="3">
+                        <TextField fx:id="txtNome" promptText="Digite seu nome" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="JetBrains Mono Thin" size="12.0" />
+                           </font></TextField>
+                        <TextField fx:id="txtAltura" promptText="Digite sua altura" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
+                           <font>
+                              <Font name="JetBrains Mono Thin" size="12.0" />
+                           </font>
                         </TextField>
-                        <TextField promptText="Digite seu peso" GridPane.rowIndex="5" />
+                        <TextField fx:id="txtPeso" promptText="Digite seu peso" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="JetBrains Mono Thin" size="12.0" />
+                           </font></TextField>
                      </children>
                      <VBox.margin>
                         <Insets left="10.0" right="10.0" top="2.0" />
@@ -83,34 +91,34 @@
                   </GridPane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefWidth="120.0" text="Calcular IMC">
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#onCalcularIMCClick" prefWidth="120.0" style="-fx-background-color: #1E1F22; -fx-border-color: #43454A;" text="Calcular IMC" textFill="#b7babf">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="11.0" />
+                              <Font name="JetBrains Mono Light" size="9.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefWidth="120.0" text="Salvar">
+                        <Button alignment="CENTER" mnemonicParsing="false" prefWidth="120.0" style="-fx-background-color: #1E1F22; -fx-border-color: #43454A;" text="Salvar" textFill="#b7babf">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="11.0" />
+                              <Font name="JetBrains Mono Light" size="9.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" prefWidth="120.0" text="Carregar Dados">
+                        <Button alignment="CENTER" mnemonicParsing="false" prefWidth="120.0" style="-fx-background-color: #1E1F22; -fx-border-color: #43454A;" text="Carregar Dados" textFill="#b7babf">
                            <HBox.margin>
                               <Insets left="10.0" right="10.0" />
                            </HBox.margin>
                            <font>
-                              <Font size="11.0" />
+                              <Font name="JetBrains Mono Light" size="9.0" />
                            </font>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -122,33 +130,41 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="505.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Cálculo IMC">
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Cálculo IMC" textFill="#b7babf">
                      <font>
-                        <Font name="Calibri Bold" size="20.0" />
+                        <Font name="JetBrains Mono Light" size="15.0" />
                      </font>
                      <VBox.margin>
-                        <Insets top="2.0" />
+                        <Insets top="5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="00.00" textAlignment="CENTER">
+                  <Label fx:id="lblIMC" alignment="TOP_CENTER" contentDisplay="CENTER" text="00.00" textAlignment="CENTER" textFill="#b7babf">
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                      <font>
-                        <Font size="94.0" />
+                        <Font name="JetBrains Mono Light" size="85.0" />
                      </font>
+                  </Label>
+                  <Label fx:id="lblClassificacao" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="68.0" layoutY="55.0" textAlignment="CENTER" textFill="#b7babf">
+                     <font>
+                        <Font name="JetBrains Mono Light Italic" size="12.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
          </children>
       </HBox>
-      <TableView prefHeight="200.0" prefWidth="200.0">
+      <TableView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #1E1F22;">
         <columns>
-          <TableColumn prefWidth="75.0" text="ID" />
-          <TableColumn prefWidth="295.0" text="NOME" />
-            <TableColumn prefWidth="92.33334350585938" text="ALTURA" />
-            <TableColumn prefWidth="102.33331298828125" text="PESO" />
-            <TableColumn prefWidth="105.0" text="IMC" />
+          <TableColumn prefWidth="75.0" style="-fx-background-color: #2B2D30;" text="ID" />
+          <TableColumn prefWidth="295.0" style="-fx-background-color: #2B2D30;" text="NOME" />
+            <TableColumn prefWidth="92.33334350585938" style="-fx-background-color: #2B2D30;" text="ALTURA" />
+            <TableColumn prefWidth="102.33331298828125" style="-fx-background-color: #2B2D30;" text="PESO" />
+            <TableColumn prefWidth="105.0" style="-fx-background-color: #2B2D30;" text="IMC" />
         </columns>
       </TableView>
    </children>
